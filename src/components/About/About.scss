@@ -1,0 +1,85 @@
+.about {
+  letter-spacing: 0.6px;
+  padding-top: 96px;
+  padding-bottom: 66px;
+  background-color: #2196f3;
+  .about_wrap {
+    align-items: center;
+  }
+  .profile-picture {
+    display: block;
+    width: 140px;
+    height: 140px;
+    border-radius: 100%;
+    margin: auto;
+  }
+  .title {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .desc {
+    margin-bottom: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: justify;
+  }
+  .contact_details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .name {
+      font-weight: bold;
+      font-size: 22px;
+      margin-bottom: 12px;
+      color: white;
+    }
+    .email {
+      color: white;
+      font-size: 14px;
+    }
+    .btn-download {
+      background: #444;
+      border: none;
+      outline: 0;
+      border-radius: 10px;
+      height: 40px;
+      width: 180px;
+      font-size: 16px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0px 12px 18px -3px rgba(0, 0, 0, 0.46);
+      &:hover {
+        color: #64b5f6;
+      }
+      &:active {
+        transition: all 0.2s ease-in-out;
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+@media (max-width: 425px) {
+  .about {
+    text-align: center;
+    .title {
+      margin-top: 40px;
+    }
+    .desc {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 14px;
+    }
+    .contact_details {
+      text-align: center;
+      flex-direction: column;
+    }
+    .btn-download {
+      font-size: 14px;
+      width: 140px;
+      height: 30px;
+    }
+  }
+}
