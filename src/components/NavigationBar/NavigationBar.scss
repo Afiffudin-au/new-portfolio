@@ -40,10 +40,11 @@
   animation: example 0.5s ease-in-out;
   background: linear-gradient(
     90deg,
-    rgba(24, 182, 191, 1) 6%,
-    rgba(39, 150, 204, 1) 45%,
-    rgba(0, 129, 255, 1) 100%
+    rgba(24, 182, 191, 0.7) 6%,
+    rgba(39, 150, 204, 0.7) 45%,
+    rgba(0, 129, 255, 0.7) 100%
   );
+  backdrop-filter: blur(20px);
 }
 @keyframes example {
   from {
