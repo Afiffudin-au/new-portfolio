@@ -23,7 +23,7 @@ const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Horizontal Bar Chart',
+      text: 'Powered by Chart.js',
     },
   },
   maintainAspectRatio: false,
@@ -32,17 +32,20 @@ function LanguageStats() {
   const [cancelFetch, setCanceFetch] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [grandintColor, setGradientColor] = useState('')
-  const { getStats, isLoading, languages, countFetched } = useGetStats()
-  const getLanguage = (isCancel) => {
-    setIsFetching(!isFetching)
+  const { getStats, isLoading, languages, countFetched, cancelToFetch } =
+    useGetStats()
+  const handleFetch = () => {
+    setIsFetching(true)
+    setCanceFetch(true)
     getStats(repoData)
-    if (isCancel) {
-      // console.log('Cancel')
-      // getStats(false, isCancel)
-    } else {
-      // console.log('Fetch')
-      // getStats(repoData)
-    }
+    console.log('Fetch')
+  }
+  const handleCancel = (isCancel) => {
+    setIsFetching(false)
+    setCanceFetch(false)
+    console.log('Cancel')
+    cancelToFetch()
+    // console.log(isCancel)
   }
   useEffect(() => {
     const canvas = document.getElementsByTagName('canvas')
@@ -53,10 +56,10 @@ function LanguageStats() {
     setGradientColor(gradient)
   }, [])
   const data = {
-    labels: ['Javascript', 'HTML', 'CSS', 'SCSS', 'TypeScript'],
+    labels: ['JS', 'HTML', 'CSS', 'SCSS', 'TS'],
     datasets: [
       {
-        label: `My language used from github in ${20} repos`,
+        label: `My language used from github in ${repoData.length} repos`,
         data: [
           languages.js,
           languages.html,
@@ -69,7 +72,15 @@ function LanguageStats() {
       },
     ],
   }
-  console.log('Count ' + countFetched)
+  useEffect(() => {
+    if (isLoading === true) {
+      setCanceFetch(true)
+    } else {
+      setCanceFetch(false)
+      setIsFetching(false)
+    }
+  }, [isLoading])
+  // console.log(countFetched)
   return (
     <div className='lang_stats'>
       <div className='container'>
@@ -86,18 +97,18 @@ function LanguageStats() {
         </div>
         <div className='row mb-5'>
           <div className='col-md-12 btn-wrap'>
-            {/* {isFetching ? (
+            {cancelFetch && (
               <div style={{ margin: '5px' }}>
-                <Btn onClick={() => getLanguage(true)}>Cancel Fetch</Btn>
+                <Btn onClick={() => handleCancel(true)}>Cancel Fetch</Btn>
               </div>
-            ) : (
+            )}
+            {!isFetching && (
               <div style={{ margin: '5px' }}>
-                <Btn onClick={() => getLanguage(false)}>
-                  Click me to fetch stats
-                </Btn>
+                <Btn onClick={handleFetch}>Click me to fetch stats</Btn>
               </div>
-            )} */}
-            <Btn onClick={() => getLanguage()}>Click me to fetch stats</Btn>
+            )}
+
+            {/* <Btn onClick={() => getLanguage()}>Click me to fetch stats</Btn> */}
           </div>
         </div>
         <div className='row'>
@@ -105,14 +116,18 @@ function LanguageStats() {
             {isLoading && (
               <div className='progress'>
                 <div
-                  style={{ width: `${Math.ceil(countFetched * 3.33)}%` }}
+                  style={{
+                    width: `${Math.ceil(countFetched * 3.33)}%`,
+                    background:
+                      'linear-gradient( 90deg,  rgba(24, 182, 191, 1) 6%,rgba(39, 150, 204, 1) 45%,rgba(0, 129, 255, 1) 100%)',
+                  }}
                   className='progress-bar'
                   role='progressbar'
                   aria-valuenow={Math.ceil(countFetched * 3.33)}
                   aria-valuemin='0'
-                  aria-valuemax='100'>{`${Math.ceil(
-                  countFetched * 3.33
-                )} %`}</div>
+                  aria-valuemax='100'>
+                  {`${Math.ceil(countFetched * 3.33)} %`}
+                </div>
               </div>
             )}
             <div style={{ height: '300px' }}>
