@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { repoData } from '../../hooks/useGetAllRepo/repos'
-import { useGetStats } from '../../hooks/useGetStats/useGetStats'
+import { useGetLanguageStats } from '../../hooks/useGetLanguageStats/useGetLanguageStats'
 import './LanguageStats.scss'
 import { Bar } from 'react-chartjs-2'
 import Btn from '../Btn/Btn'
@@ -13,7 +12,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-import { formatBytes } from '../../lib/formatByte'
+import { languageStats } from '../../hooks/useGetLanguageStats/languageStats'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const options = {
   indexAxis: 'y',
@@ -30,20 +29,13 @@ const options = {
   maintainAspectRatio: false,
 }
 function LanguageStats() {
-  const [cancelFetch, setCanceFetch] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [grandintColor, setGradientColor] = useState('')
-  const { getStats, isLoading, languages, countFetched } = useGetStats()
-  const getLanguage = (isCancel) => {
+  const { getLanguageStats, isLoading, languages, countFetched } =
+    useGetLanguageStats()
+  const getLanguage = () => {
     setIsFetching(!isFetching)
-    getStats(repoData)
-    if (isCancel) {
-      // console.log('Cancel')
-      // getStats(false, isCancel)
-    } else {
-      // console.log('Fetch')
-      // getStats(repoData)
-    }
+    getLanguageStats()
   }
   useEffect(() => {
     const canvas = document.getElementsByTagName('canvas')
@@ -57,7 +49,7 @@ function LanguageStats() {
     labels: ['JS', 'HTML', 'CSS', 'SCSS', 'TS'],
     datasets: [
       {
-        label: `My language used from github in ${repoData.length} repos`,
+        label: `My language used from github in ${languageStats.length} repos`,
         data: [
           languages.js,
           languages.html,
@@ -70,13 +62,12 @@ function LanguageStats() {
       },
     ],
   }
-  // console.log('Count ' + countFetched)
   return (
     <div className='lang_stats'>
       <div className='container'>
         <div className='row mb-5'>
           <div className='col-md-12 text-center'>
-            <h1 className='title'>Stats</h1>
+            <h1 className='title'>Language Stats</h1>
             <p className='desc'>
               Language statistics section, will display all types of languages
               that I use in several projects. It is calculated based on multiple
@@ -88,18 +79,9 @@ function LanguageStats() {
         </div>
         <div className='row mb-5'>
           <div className='col-md-12 btn-wrap'>
-            {/* {isFetching ? (
-              <div style={{ margin: '5px' }}>
-                <Btn onClick={() => getLanguage(true)}>Cancel Fetch</Btn>
-              </div>
-            ) : (
-              <div style={{ margin: '5px' }}>
-                <Btn onClick={() => getLanguage(false)}>
-                  Click me to fetch stats
-                </Btn>
-              </div>
-            )} */}
-            <Btn onClick={() => getLanguage()}>Click me to fetch stats</Btn>
+            <Btn isDisabled={isLoading} onClick={getLanguage}>
+              Click me to fetch stats
+            </Btn>
           </div>
         </div>
         <div className='row'>

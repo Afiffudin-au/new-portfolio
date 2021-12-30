@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { formatBytes } from '../../lib/formatByte'
+import { languageStats } from './languageStats'
 const controller = new AbortController()
 let jsLanguage = []
 let tsLanguage = []
@@ -37,20 +38,11 @@ const callStatsApi = async (item) => {
       }
     })
 }
-export const useGetStats = () => {
+export const useGetLanguageStats = () => {
   const [countFetched, setCountFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
-  const getStats = (statsData, isCancel) => {
-    if (isCancel) {
-      setCountFetched(0)
-      setLanguage({})
-      setIsLoading(false)
-      console.log('canceled')
-      controller.abort()
-      return
-    }
-
+  const getLanguageStats = () => {
     //Clean UP
     jsLanguage = []
     tsLanguage = []
@@ -68,14 +60,14 @@ export const useGetStats = () => {
     setIsLoading(false)
     const promise = new Promise(async (resolve, reject) => {
       setIsLoading(true)
-      if (statsData) {
-        for (const [i, item] of statsData.entries()) {
+      if (languageStats) {
+        for (const [i, item] of languageStats.entries()) {
           await callStatsApi(item)
           if (fetchErorr === true) {
             return
           }
           setCountFetched(i + 1)
-          if (i === statsData.length - 1) {
+          if (i === languageStats.length - 1) {
             resolve('SUCCESS')
           }
         }
@@ -126,7 +118,7 @@ export const useGetStats = () => {
   }
 
   return {
-    getStats,
+    getLanguageStats,
     countFetched,
     isLoading,
     languages,

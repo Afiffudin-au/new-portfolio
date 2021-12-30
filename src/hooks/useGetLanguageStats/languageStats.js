@@ -1,4 +1,4 @@
-export const repoData = [
+export const languageStats = [
   'https://api.github.com/repos/Afiffudin-au/beatiful-photos/languages',
   'https://api.github.com/repos/Afiffudin-au/air-bnb-c/languages',
   'https://api.github.com/repos/Afiffudin-au/CookRecipe-zz/languages',
