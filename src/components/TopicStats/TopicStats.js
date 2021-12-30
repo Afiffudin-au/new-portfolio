@@ -60,7 +60,7 @@ function TopicStats() {
     ],
     datasets: [
       {
-        label: `My language used from github in ${topicStats.length} repos`,
+        label: `My topics used from github in ${topicStats.length} repos`,
         data: [
           topics.react,
           topics.next,
@@ -122,7 +122,7 @@ function TopicStats() {
                 )} %`}</div>
               </div>
             )}
-            <div style={{ height: '300px' }}>
+            <div className='horizontalBarWrap'>
               <Bar options={options} data={data} />;
             </div>
           </div>

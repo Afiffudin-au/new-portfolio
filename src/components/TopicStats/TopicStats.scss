@@ -12,4 +12,14 @@
     align-items: center;
     justify-content: center;
   }
+  .horizontalBarWrap {
+    height: 400px;
+  }
+}
+@media (max-width: 575.98px) {
+  .topic_stats {
+    .horizontalBarWrap {
+      height: 350px;
+    }
+  }
 }
