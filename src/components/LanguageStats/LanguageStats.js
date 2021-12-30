@@ -13,6 +13,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
+import { formatBytes } from '../../lib/formatByte'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const options = {
   indexAxis: 'y',
@@ -32,20 +33,17 @@ function LanguageStats() {
   const [cancelFetch, setCanceFetch] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
   const [grandintColor, setGradientColor] = useState('')
-  const { getStats, isLoading, languages, countFetched, cancelToFetch } =
-    useGetStats()
-  const handleFetch = () => {
-    setIsFetching(true)
-    setCanceFetch(true)
+  const { getStats, isLoading, languages, countFetched } = useGetStats()
+  const getLanguage = (isCancel) => {
+    setIsFetching(!isFetching)
     getStats(repoData)
-    console.log('Fetch')
-  }
-  const handleCancel = (isCancel) => {
-    setIsFetching(false)
-    setCanceFetch(false)
-    console.log('Cancel')
-    cancelToFetch()
-    // console.log(isCancel)
+    if (isCancel) {
+      // console.log('Cancel')
+      // getStats(false, isCancel)
+    } else {
+      // console.log('Fetch')
+      // getStats(repoData)
+    }
   }
   useEffect(() => {
     const canvas = document.getElementsByTagName('canvas')
@@ -72,15 +70,7 @@ function LanguageStats() {
       },
     ],
   }
-  useEffect(() => {
-    if (isLoading === true) {
-      setCanceFetch(true)
-    } else {
-      setCanceFetch(false)
-      setIsFetching(false)
-    }
-  }, [isLoading])
-  // console.log(countFetched)
+  // console.log('Count ' + countFetched)
   return (
     <div className='lang_stats'>
       <div className='container'>
@@ -91,24 +81,25 @@ function LanguageStats() {
               Language statistics section, will display all types of languages
               that I use in several projects. It is calculated based on multiple
               repositories and is calculated based on the total "bytes" of all
-              code. In conclusion each language will be summed by bytes.
+              code. In conclusion each language will be summed by bytes and
+              converted to kilobytes.
             </p>
           </div>
         </div>
         <div className='row mb-5'>
           <div className='col-md-12 btn-wrap'>
-            {cancelFetch && (
+            {/* {isFetching ? (
               <div style={{ margin: '5px' }}>
-                <Btn onClick={() => handleCancel(true)}>Cancel Fetch</Btn>
+                <Btn onClick={() => getLanguage(true)}>Cancel Fetch</Btn>
               </div>
-            )}
-            {!isFetching && (
+            ) : (
               <div style={{ margin: '5px' }}>
-                <Btn onClick={handleFetch}>Click me to fetch stats</Btn>
+                <Btn onClick={() => getLanguage(false)}>
+                  Click me to fetch stats
+                </Btn>
               </div>
-            )}
-
-            {/* <Btn onClick={() => getLanguage()}>Click me to fetch stats</Btn> */}
+            )} */}
+            <Btn onClick={() => getLanguage()}>Click me to fetch stats</Btn>
           </div>
         </div>
         <div className='row'>
@@ -116,18 +107,14 @@ function LanguageStats() {
             {isLoading && (
               <div className='progress'>
                 <div
-                  style={{
-                    width: `${Math.ceil(countFetched * 3.33)}%`,
-                    background:
-                      'linear-gradient( 90deg,  rgba(24, 182, 191, 1) 6%,rgba(39, 150, 204, 1) 45%,rgba(0, 129, 255, 1) 100%)',
-                  }}
+                  style={{ width: `${Math.ceil(countFetched * 3.33)}%` }}
                   className='progress-bar'
                   role='progressbar'
                   aria-valuenow={Math.ceil(countFetched * 3.33)}
                   aria-valuemin='0'
-                  aria-valuemax='100'>
-                  {`${Math.ceil(countFetched * 3.33)} %`}
-                </div>
+                  aria-valuemax='100'>{`${Math.ceil(
+                  countFetched * 3.33
+                )} %`}</div>
               </div>
             )}
             <div style={{ height: '300px' }}>

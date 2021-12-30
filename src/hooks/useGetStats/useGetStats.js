@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { formatBytes } from '../../lib/formatByte'
 const controller = new AbortController()
 let jsLanguage = []
 let tsLanguage = []
@@ -13,7 +14,6 @@ let totalCSS = 0
 let totalSCSS = 0
 let fetchErorr = false
 const callStatsApi = async (item) => {
-  console.log('Fetching')
   return axios({
     method: 'GET',
     url: item,
@@ -41,26 +41,16 @@ export const useGetStats = () => {
   const [countFetched, setCountFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
-  const cancelToFetch = () => {
-    console.log('Success')
-    controller.abort()
-    //Clean UP
-    jsLanguage = []
-    tsLanguage = []
-    htmlLang = []
-    cssLang = []
-    scssLang = []
-    totalJavascript = 0
-    totalTypescript = 0
-    totalHTML = 0
-    totalCSS = 0
-    totalSCSS = 0
-
-    setCountFetched(0)
-    setLanguage({})
-    setIsLoading(false)
-  }
   const getStats = (statsData, isCancel) => {
+    // if (isCancel) {
+    //   setCountFetched(0)
+    //   setLanguage({})
+    //   setIsLoading(false)
+    //   console.log('canceled')
+    //   controller.abort()
+    //   return
+    // }
+
     //Clean UP
     jsLanguage = []
     tsLanguage = []
@@ -79,7 +69,6 @@ export const useGetStats = () => {
     const promise = new Promise(async (resolve, reject) => {
       setIsLoading(true)
       if (statsData) {
-        console.log(statsData)
         for (const [i, item] of statsData.entries()) {
           await callStatsApi(item)
           if (fetchErorr === true) {
@@ -122,11 +111,11 @@ export const useGetStats = () => {
           }
         })
         setLanguage({
-          js: totalJavascript,
-          html: totalHTML,
-          css: totalCSS,
-          scss: totalSCSS,
-          ts: totalTypescript,
+          js: formatBytes(totalJavascript),
+          html: formatBytes(totalHTML),
+          css: formatBytes(totalCSS),
+          scss: formatBytes(totalSCSS),
+          ts: formatBytes(totalTypescript),
         })
         setIsLoading(false)
       })
@@ -141,6 +130,5 @@ export const useGetStats = () => {
     countFetched,
     isLoading,
     languages,
-    cancelToFetch,
   }
 }
