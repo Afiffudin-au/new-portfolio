@@ -42,14 +42,14 @@ export const useGetStats = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
   const getStats = (statsData, isCancel) => {
-    // if (isCancel) {
-    //   setCountFetched(0)
-    //   setLanguage({})
-    //   setIsLoading(false)
-    //   console.log('canceled')
-    //   controller.abort()
-    //   return
-    // }
+    if (isCancel) {
+      setCountFetched(0)
+      setLanguage({})
+      setIsLoading(false)
+      console.log('canceled')
+      controller.abort()
+      return
+    }
 
     //Clean UP
     jsLanguage = []
