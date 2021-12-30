@@ -27,7 +27,7 @@ const skillItems = [
 
 function Skills() {
   return (
-    <div className='skills'>
+    <section className='skills'>
       <div className='container'>
         <div className='row'>
           <div className='col-md-4'>
@@ -56,7 +56,7 @@ function Skills() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 

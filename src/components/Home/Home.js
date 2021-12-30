@@ -4,6 +4,7 @@ import Banner from '../Banner/Banner'
 import LanguageStats from '../LanguageStats/LanguageStats'
 import NavigationBar from '../NavigationBar/NavigationBar'
 import Skills from '../Skills/Skills'
+import TopicStats from '../TopicStats/TopicStats'
 function Home() {
   return (
     <div id='home'>
@@ -12,6 +13,7 @@ function Home() {
       <About />
       <Skills />
       <LanguageStats />
+      <TopicStats />
     </div>
   )
 }

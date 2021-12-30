@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import { useGetLanguageStats } from '../../hooks/useGetLanguageStats/useGetLanguageStats'
-import './LanguageStats.scss'
-import { Bar } from 'react-chartjs-2'
-import Btn from '../Btn/Btn'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -12,7 +8,11 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-import { languageStats } from '../../hooks/useGetLanguageStats/languageStats'
+import { Bar } from 'react-chartjs-2'
+import Btn from '../Btn/Btn'
+import { useGetTopics } from '../../hooks/useGetTopics/useGetTopics'
+import './TopicStats.scss'
+import { topicStats } from '../../hooks/useGetTopics/topicStats'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const options = {
   indexAxis: 'y',
@@ -28,14 +28,13 @@ const options = {
   },
   maintainAspectRatio: false,
 }
-function LanguageStats() {
+function TopicStats() {
+  const { getTopics, numberOfFetched, isLoading, topics } = useGetTopics()
   const [isFetching, setIsFetching] = useState(false)
   const [grandintColor, setGradientColor] = useState('')
-  const { getLanguageStats, isLoading, languages, numberOfFetched } =
-    useGetLanguageStats()
-  const getLanguage = () => {
+  const handeGetTopics = () => {
     setIsFetching(!isFetching)
-    getLanguageStats()
+    getTopics()
   }
   useEffect(() => {
     const canvas = document.getElementsByTagName('canvas')
@@ -46,40 +45,58 @@ function LanguageStats() {
     setGradientColor(gradient)
   }, [])
   const data = {
-    labels: ['JS', 'HTML', 'CSS', 'SCSS', 'TS'],
+    labels: [
+      'React',
+      'NextJs',
+      'Redux',
+      'VanillaJS',
+      'Materi-Ui',
+      'tailwind',
+      'Bootstraps',
+      'Axios',
+      'Http-req',
+      'API-requ',
+      'chakraUi',
+    ],
     datasets: [
       {
-        label: `My language used from github in ${languageStats.length} repos`,
+        label: `My language used from github in ${topicStats.length} repos`,
         data: [
-          languages.js,
-          languages.html,
-          languages.css,
-          languages.scss,
-          languages.ts,
+          topics.react,
+          topics.next,
+          topics.redux,
+          topics.vanillaJs,
+          topics.materialUi,
+          topics.tailwindCss,
+          topics.bootstraps,
+          topics.axios,
+          topics.httpRequests,
+          topics.apiRequests,
+          topics.chakraUi,
         ],
         backgroundColor: grandintColor,
         borderRadius: Number.MAX_VALUE,
       },
     ],
   }
+  // console.log(topics)
   return (
-    <section className='lang_stats'>
+    <section className='topic_stats'>
       <div className='container'>
         <div className='row mb-5'>
           <div className='col-md-12 text-center'>
-            <h1 className='title'>Language Stats</h1>
+            <h1 className='title'>Topic Stats</h1>
             <p className='desc'>
-              Language statistics section, will display all types of languages
-              that I use in several projects. It is calculated based on multiple
-              repositories and is calculated based on the total "bytes" of all
-              code. In conclusion each language will be summed by bytes and
-              converted to kilobytes.
+              Topic statistics section, will show you all the types of topics
+              I've used in several projects. This is calculated by topic in each
+              repository. In conclusion each repository will have its own topic
+              and will be summed.
             </p>
           </div>
         </div>
         <div className='row mb-5'>
           <div className='col-md-12 btn-wrap'>
-            <Btn isDisabled={isLoading} onClick={getLanguage}>
+            <Btn isDisabled={isLoading} onClick={handeGetTopics}>
               Click me to fetch stats
             </Btn>
           </div>
@@ -91,17 +108,17 @@ function LanguageStats() {
                 <div
                   style={{
                     width: `${Math.ceil(
-                      numberOfFetched * (100 / languageStats.length)
+                      numberOfFetched * (100 / topicStats.length)
                     )}%`,
                   }}
                   className='progress-bar'
                   role='progressbar'
                   aria-valuenow={Math.ceil(
-                    numberOfFetched * (100 / languageStats.length)
+                    numberOfFetched * (100 / topicStats.length)
                   )}
                   aria-valuemin='0'
                   aria-valuemax='100'>{`${Math.ceil(
-                  numberOfFetched * (100 / languageStats.length)
+                  numberOfFetched * (100 / topicStats.length)
                 )} %`}</div>
               </div>
             )}
@@ -115,4 +132,4 @@ function LanguageStats() {
   )
 }
 
-export default LanguageStats
+export default TopicStats

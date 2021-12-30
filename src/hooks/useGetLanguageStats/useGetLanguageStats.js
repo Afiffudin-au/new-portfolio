@@ -39,7 +39,7 @@ const callStatsApi = async (item) => {
     })
 }
 export const useGetLanguageStats = () => {
-  const [countFetched, setCountFetched] = useState(0)
+  const [numberOfFetched, setNumberOfFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
   const getLanguageStats = () => {
@@ -55,7 +55,7 @@ export const useGetLanguageStats = () => {
     totalCSS = 0
     totalSCSS = 0
 
-    setCountFetched(0)
+    setNumberOfFetched(0)
     setLanguage({})
     setIsLoading(false)
     const promise = new Promise(async (resolve, reject) => {
@@ -66,7 +66,7 @@ export const useGetLanguageStats = () => {
           if (fetchErorr === true) {
             return
           }
-          setCountFetched(i + 1)
+          setNumberOfFetched(i + 1)
           if (i === languageStats.length - 1) {
             resolve('SUCCESS')
           }
@@ -119,7 +119,7 @@ export const useGetLanguageStats = () => {
 
   return {
     getLanguageStats,
-    countFetched,
+    numberOfFetched,
     isLoading,
     languages,
   }
