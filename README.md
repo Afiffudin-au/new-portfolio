@@ -1,3 +1,23 @@
+#Description
+
+Hi everyone, this is my very simple personal portfolio project. This is my second portfolio project, this is a refinement of my first portfolio project. You can see my first portfolio https://fif-au.netlify.app/ and you can also see my new portfolio https://afiffudin-au.netlify.app/.
+
+This new portfolio has several improvements, namely:
+1. UI Improvements
+2. UX Improvements
+3. Improved Chart Statistics
+4. Using Bootstrap 4
+5. Improved performance (94% average performance and above)
+6. Improved responsive layout
+7. And others
+
+This portfolio was created using the following technologies:
+1.React
+2. Chart.js to display programming language statistics and topics
+3. Axios for API calls
+4. Github API
+5. Scss
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
