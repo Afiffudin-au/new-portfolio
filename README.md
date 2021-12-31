@@ -12,7 +12,7 @@ This new portfolio has several improvements, namely:
 7. And others
 
 This portfolio was created using the following technologies:
-1.React
+1. React
 2. Chart.js to display programming language statistics and topics
 3. Axios for API calls
 4. Github API
