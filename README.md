@@ -1,4 +1,4 @@
-#Description
+## Description
 
 Hi everyone, this is my very simple personal portfolio project. This is my second portfolio project, this is a refinement of my first portfolio project. You can see my first portfolio https://fif-au.netlify.app/ and you can also see my new portfolio https://afiffudin-au.netlify.app/.
 
