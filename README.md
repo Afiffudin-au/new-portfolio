@@ -25,6 +25,9 @@ This portfolio was created using the following technologies:
 REACT_APP_AUTH=YOUR_API_TOKEN
 REACT_APP_ACCEPT=application/vnd.github.v3+json
 
+## Note
+Most of my projects are of the private type, but for now and so on I will make my projects public freely.
+
 ## ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
