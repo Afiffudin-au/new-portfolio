@@ -3,6 +3,7 @@ import About from '../About/About'
 import Banner from '../Banner/Banner'
 import LanguageStats from '../LanguageStats/LanguageStats'
 import NavigationBar from '../NavigationBar/NavigationBar'
+import Project from '../Project/Project'
 import Skills from '../Skills/Skills'
 import TopicStats from '../TopicStats/TopicStats'
 function Home() {
@@ -14,6 +15,7 @@ function Home() {
       <Skills />
       <LanguageStats />
       <TopicStats />
+      <Project />
     </div>
   )
 }
