@@ -12,7 +12,7 @@
   }
   .modal-content {
     margin-top: 10px;
-    background: #1976d2;
+    background: #0b2e51;
     border: none;
     outline: 0;
     color: #fafafa;
@@ -25,19 +25,23 @@
           display: block;
           width: 100%;
           object-fit: cover;
-          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          filter: drop-shadow(0px 0px 3px #039be5);
           border-radius: 10px;
         }
       }
       .content-2 {
         flex: 0.5;
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
         .project-name {
           font-size: 24px;
           font-weight: bold;
           letter-spacing: 0.6px;
+          margin: 0;
         }
         .tech-used {
-          margin-bottom: 1rem;
+          // margin-bottom: 1rem;
           gap: 5px;
           display: flex;
           flex-wrap: wrap;
@@ -53,6 +57,25 @@
             padding-left: 10px;
             border-radius: 999px;
             font-size: 14px;
+          }
+        }
+        .description {
+          text-align: justify;
+          letter-spacing: 0.5px;
+          font-size: 15px;
+          font-weight: 400;
+          // margin-bottom: 1rem;
+          &::first-letter {
+            text-transform: uppercase;
+          }
+        }
+        .github-link {
+          letter-spacing: 0.5px;
+          font-size: 15px;
+          font-weight: 400;
+          a {
+            color: #3aff77;
+            text-decoration: underline;
           }
         }
       }

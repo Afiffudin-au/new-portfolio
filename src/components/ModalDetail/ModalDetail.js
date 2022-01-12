@@ -5,6 +5,7 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './ModalDetail.scss'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import handleSearchByTag from '../../lib/searchByTag'
+import urlify from '../../lib/urlify'
 const randomColors = [
   '#2196f3',
   '#1976d2',
@@ -48,7 +49,7 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
           left: '30px',
           right: '30px',
           bottom: '30px',
-          background: '#1976d2',
+          background: '#0B2E51',
           // background:
           //   'linear-gradient(270deg, rgba(33,150,243,1) 30%, rgba(28,158,221,1) 45%)',
           overflow: 'auto',
@@ -77,7 +78,7 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
             <div className='tech-used'>
               {projectDetails?.tech?.map((item, i) => (
                 <div
-                  key={item._id}
+                  key={i}
                   onClick={() => handleSearchByTag(item)}
                   className='tech'
                   style={{
@@ -91,8 +92,24 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
                 </div>
               ))}
             </div>
-
-            <p>lorem1</p>
+            <div
+              className='description'
+              dangerouslySetInnerHTML={{
+                __html: urlify(projectDetails?.description),
+              }}
+            />
+            {!isLoading && (
+              <p className='github-link'>
+                See Project :{' '}
+                <a
+                  href={projectDetails.githubLink}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='github-link'>
+                  {projectDetails.githubLink}
+                </a>{' '}
+              </p>
+            )}
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import './ProjectCard.scss'
 function ProjectCard({ id, projectName, technology, imgUrl, description }) {
   const [openModal, setOpenModal] = useState(false)
   const handleDetails = () => {
-    // getProjectDetail(id)
     setOpenModal(true)
   }
   return (
