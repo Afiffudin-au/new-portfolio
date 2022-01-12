@@ -3,16 +3,62 @@
   border-radius: 8px 8px 8px 8px;
   background-color: white;
   cursor: pointer;
+  width: 100%;
+  height: 100%;
   .image {
     display: block;
     width: 100%;
+    height: 155px;
     border-radius: 8px 8px 0px 0px;
     object-fit: cover;
   }
   .wrap {
-    padding: 5px;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-bottom: 10px;
+    .project-name {
+      color: white;
+      background: #1e88e5;
+      box-shadow: 0px 4px 8px -3px rgba(3, 155, 229, 0.46);
+      width: max-content;
+      padding-top: 3px;
+      padding-bottom: 3px;
+      padding-right: 6px;
+      padding-left: 6px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 5px;
+    }
+    .tech {
+      .tech-item {
+        margin-right: 5px;
+        margin-bottom: 5px;
+        background-color: #039be5;
+        box-shadow: 0px 4px 8px -3px rgba(3, 155, 229, 0.46);
+        color: white;
+        font-size: 13px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        padding-right: 6px;
+        padding-left: 6px;
+        border-radius: 999px;
+        width: max-content;
+        letter-spacing: 0.5px;
+      }
+    }
     p {
       margin: 0;
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 576px) {
+  .project-card {
+    .image {
+      height: 200px;
+      object-fit: fill;
     }
   }
 }

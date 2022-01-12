@@ -1,18 +1,18 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export const useGetProjects = () => {
+export const useGetProjectDetail = () => {
   const [isLoading, setIsLoading] = useState(false)
-  const [projects, setProjects] = useState([])
-  const getProject = () => {
+  const [projectDetails, setProjectDetails] = useState([])
+  const getProjectDetail = (id) => {
     setIsLoading(true)
     axios({
       method: 'get',
-      url: 'https://apiv1.tosulafiffudin.com/portfolio/cards',
+      url: `https://apiv1.tosulafiffudin.com/portfolio/cards/${id}`,
     })
       .then((res) => {
         setIsLoading(false)
-        setProjects(res.data)
+        setProjectDetails(res.data)
       })
       .catch((err) => {
         setIsLoading(false)
@@ -20,8 +20,8 @@ export const useGetProjects = () => {
       })
   }
   return {
-    getProject,
     isLoading,
-    projects,
+    projectDetails,
+    getProjectDetail,
   }
 }

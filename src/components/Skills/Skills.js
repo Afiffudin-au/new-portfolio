@@ -1,4 +1,5 @@
 import React from 'react'
+import handleSearchByTag from '../../lib/searchByTag'
 import './Skills.scss'
 const randomColors = [
   '#2196f3',
@@ -40,6 +41,7 @@ function Skills() {
             <div className='items'>
               {skillItems.map((item, i) => (
                 <div
+                  onClick={() => handleSearchByTag(item)}
                   key={i}
                   className='item'
                   style={{

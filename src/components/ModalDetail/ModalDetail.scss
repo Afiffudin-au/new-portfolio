@@ -1,0 +1,91 @@
+.main-modal {
+  box-shadow: 0px 1px 23px -2px rgba(100, 181, 246, 1);
+  .btn-close {
+    font-size: 38px;
+    color: #eaf0f3;
+    cursor: pointer;
+    display: block;
+    margin: auto;
+    &:hover {
+      color: #ff5656;
+    }
+  }
+  .modal-content {
+    margin-top: 10px;
+    background: #1976d2;
+    border: none;
+    outline: 0;
+    color: #fafafa;
+    .wrap {
+      display: flex;
+      gap: 5px;
+      .image {
+        flex: 0.5;
+        img {
+          display: block;
+          width: 100%;
+          object-fit: cover;
+          filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+          border-radius: 10px;
+        }
+      }
+      .content-2 {
+        flex: 0.5;
+        .project-name {
+          font-size: 24px;
+          font-weight: bold;
+          letter-spacing: 0.6px;
+        }
+        .tech-used {
+          margin-bottom: 1rem;
+          gap: 5px;
+          display: flex;
+          flex-wrap: wrap;
+          .tech {
+            color: white;
+            cursor: pointer;
+            box-shadow: 0px 12px 18px -3px rgba(3, 155, 229, 0.46);
+            // background-color: #039be5;
+            width: max-content;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-right: 10px;
+            padding-left: 10px;
+            border-radius: 999px;
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width: 320px) and (max-width: 992px) {
+  .ReactModal__Content {
+    top: 5px !important;
+    left: 5px !important;
+    right: 5px !important;
+    bottom: 5px !important;
+  }
+  .main-modal {
+    .modal-content {
+      .wrap {
+        flex-direction: column;
+        img {
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+@media (min-width: 576px) and (max-width: 992px) {
+  .main-modal {
+    .modal-content {
+      .wrap {
+        img {
+          margin: auto;
+          width: 80% !important;
+        }
+      }
+    }
+  }
+}

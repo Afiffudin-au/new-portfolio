@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { formatBytes } from '../../lib/formatByte'
+import formatBytes from '../../lib/formatByte'
 import { languageStats } from './languageStats'
 const controller = new AbortController()
 let jsLanguage = []

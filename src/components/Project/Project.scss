@@ -1,4 +1,39 @@
 .project {
   background-color: #e4ebf1;
   padding: 10px;
+  .title {
+    font-size: 28px;
+    text-align: center;
+  }
+  .loading {
+    font-size: 25px;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 200px;
+    animation: type 1s infinite;
+  }
+  .wrap-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    p {
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      font-style: italic;
+    }
+    .github-link {
+      font-size: 50px;
+      cursor: pointer;
+      &:hover {
+        color: #007ebd;
+      }
+    }
+  }
+}
+@keyframes type {
+  from {
+    width: 0;
+  }
 }
