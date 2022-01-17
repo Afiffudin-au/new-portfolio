@@ -30,6 +30,7 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
   useEffect(() => {
     getProjectDetail(id)
   }, [id])
+  console.log(projectDetails)
   return (
     <Modal
       className='main-modal'
@@ -99,16 +100,28 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
               }}
             />
             {!isLoading && (
-              <p className='github-link'>
-                See Project :{' '}
-                <a
-                  href={projectDetails.githubLink}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='github-link'>
-                  {projectDetails.githubLink}
-                </a>{' '}
-              </p>
+              <div>
+                <p className='github-link'>
+                  See Project :{' '}
+                  <a
+                    href={projectDetails.githubLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='github-link'>
+                    {projectDetails.githubLink}
+                  </a>{' '}
+                </p>
+                <p className='github-link'>
+                  View Project :{' '}
+                  <a
+                    href={projectDetails.previewLink}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='github-link'>
+                    {projectDetails.previewLink}
+                  </a>{' '}
+                </p>
+              </div>
             )}
           </div>
         </div>
