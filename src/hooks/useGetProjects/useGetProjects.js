@@ -8,8 +8,8 @@ export const useGetProjects = () => {
     setIsLoading(true)
     axios({
       method: 'get',
-      // url: 'https://apiv1.tosulafiffudin.com/portfolio/cards',
-      url: 'http://localhost:8001/portfolio/cards',
+      url: 'https://apiv1.tosulafiffudin.com/portfolio/cards',
+      // url: 'http://localhost:8001/portfolio/cards',
     })
       .then((res) => {
         setIsLoading(false)
