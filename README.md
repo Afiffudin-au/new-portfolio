@@ -23,6 +23,7 @@ This portfolio was created using the following technologies:
 ## you have to create an .env file containing the github api token :
 
 REACT_APP_AUTH=YOUR_API_TOKEN
+
 REACT_APP_ACCEPT=application/vnd.github.v3+json
 
 ## Note
