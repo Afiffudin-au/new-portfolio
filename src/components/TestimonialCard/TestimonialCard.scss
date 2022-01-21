@@ -1,0 +1,19 @@
+.testimonial-card {
+  .card-up {
+    height: 140px;
+    overflow: hidden;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    background: linear-gradient(40deg, #45cafc, #303f9f) !important;
+  }
+  .avatar {
+    width: 120px;
+    margin-top: -130px;
+    overflow: hidden;
+    border: 5px solid #fff;
+    border-radius: 50%;
+  }
+  .card-body {
+    text-align: center;
+  }
+}

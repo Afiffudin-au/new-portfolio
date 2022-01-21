@@ -20,7 +20,7 @@ const skillItems = [
   'Scss',
   'React',
   'React Redux',
-  'Next',
+  'Next.js',
   'Material-Ui',
   'Bootstrap ',
   'Tailwind',
