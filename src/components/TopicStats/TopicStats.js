@@ -123,7 +123,7 @@ function TopicStats() {
               </div>
             )}
             <div className='horizontalBarWrap'>
-              <Bar options={options} data={data} />;
+              <Bar options={options} data={data} />
             </div>
           </div>
         </div>

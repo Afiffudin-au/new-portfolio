@@ -106,7 +106,7 @@ function LanguageStats() {
               </div>
             )}
             <div style={{ height: '300px' }}>
-              <Bar options={options} data={data} />;
+              <Bar options={options} data={data} />
             </div>
           </div>
         </div>
