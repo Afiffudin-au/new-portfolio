@@ -2,6 +2,7 @@ import React from 'react'
 import About from '../About/About'
 import Banner from '../Banner/Banner'
 import Contact from '../Contact/Contact'
+import Footer from '../Footer/Footer'
 import LanguageStats from '../LanguageStats/LanguageStats'
 import NavigationBar from '../NavigationBar/NavigationBar'
 import Project from '../Project/Project'
@@ -17,9 +18,10 @@ function Home() {
       <Skills />
       <LanguageStats />
       <TopicStats />
-      {/* <Project /> */}
-      {/* <Testimonial /> */}
+      <Project />
+      <Testimonial />
       <Contact />
+      <Footer />
     </div>
   )
 }

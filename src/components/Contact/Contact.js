@@ -10,7 +10,6 @@ function Contact() {
     formState: { errors },
   } = useForm()
   const onSubmit = (data) => {
-    console.log('eksesuki')
     const { username, email, subject, message } = data
     let templateParams = {
       subject: subject,
