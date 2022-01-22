@@ -11,7 +11,7 @@ function Project() {
     getProject()
   }, [])
   return (
-    <section className='project' id='project'>
+    <section className='project' id='work'>
       <div className='container'>
         <h1 className='title'>Projects</h1>
         {isLoading && <ProgressBar />}

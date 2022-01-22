@@ -8,9 +8,8 @@ function Testimonial() {
   useEffect(() => {
     getTestimonial()
   }, [])
-  console.log(testimonials)
   return (
-    <section className='testimonial'>
+    <section className='testimonial' id='testimonials'>
       <div className='container'>
         <h1 className='title'>Testimonials</h1>
         {isLoading && <ProgressBar />}

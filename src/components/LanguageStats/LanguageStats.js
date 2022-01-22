@@ -63,7 +63,7 @@ function LanguageStats() {
     ],
   }
   return (
-    <section className='lang_stats'>
+    <section className='lang_stats' id='stats'>
       <div className='container'>
         <div className='row mb-5'>
           <div className='col-md-12 text-center'>

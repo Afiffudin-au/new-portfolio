@@ -8,8 +8,8 @@ export const navItems = [
     title: 'about',
   },
   {
-    link: 'resume',
-    title: 'resume',
+    link: 'stats',
+    title: 'stats',
   },
   {
     link: 'work',

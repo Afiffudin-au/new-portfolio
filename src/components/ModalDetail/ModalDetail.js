@@ -30,7 +30,6 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
   useEffect(() => {
     getProjectDetail(id)
   }, [id])
-  console.log(projectDetails)
   return (
     <Modal
       className='main-modal'

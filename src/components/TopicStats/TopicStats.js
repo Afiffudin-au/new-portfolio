@@ -79,7 +79,6 @@ function TopicStats() {
       },
     ],
   }
-  // console.log(topics)
   return (
     <section className='topic_stats'>
       <div className='container'>

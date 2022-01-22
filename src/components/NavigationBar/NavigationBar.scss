@@ -56,10 +56,17 @@
 }
 @media (min-width: 360px) and (max-width: 992px) {
   .active-blue {
-    color: #1e88e5 !important;
+    color: #fafafa !important;
   }
   .navbar {
-    background: #f8f9fa !important;
+    background: linear-gradient(
+      90deg,
+      rgba(24, 182, 191, 0.7) 6%,
+      rgba(39, 150, 204, 0.7) 45%,
+      rgba(0, 129, 255, 0.7) 100%
+    );
+    backdrop-filter: blur(20px);
+    // background: #f8f9fa !important;
     -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);
     -moz-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);
     box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);

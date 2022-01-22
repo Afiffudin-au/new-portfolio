@@ -56,7 +56,6 @@ export const useGetTopics = () => {
         totalTopics?.forEach(function (i) {
           count[i] = (count[i] || 0) + 1
         })
-        console.log(count)
         setTopics({
           react: count['react'],
           redux: count['redux'],

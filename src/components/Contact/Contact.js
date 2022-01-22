@@ -36,7 +36,7 @@ function Contact() {
       )
   }
   return (
-    <section className='contact'>
+    <section className='contact' id='contact'>
       <h1 className='title'>Contact </h1>
       <div className='container'>
         <form className='contact_form'>
