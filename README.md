@@ -26,6 +26,9 @@ REACT_APP_AUTH=YOUR_API_TOKEN
 
 REACT_APP_ACCEPT=application/vnd.github.v3+json
 
+## portfolio api for public
+https://github.com/Afiffudin-au/new-portfolio-api-for-public
+
 ## Note
 Most of my projects are of the private type, but for now and so on I will make my projects public freely.
 
