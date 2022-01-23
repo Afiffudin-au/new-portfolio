@@ -66,19 +66,9 @@
       rgba(0, 129, 255, 0.7) 100%
     );
     backdrop-filter: blur(20px);
-    // background: #f8f9fa !important;
     -webkit-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);
     -moz-box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);
     box-shadow: 0px 1px 6px 1px rgba(0, 0, 0, 0.34);
-
-    .navbar-brand {
-      background: -webkit-linear-gradient(
-        rgb(132, 124, 246),
-        rgb(245, 17, 233)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
     .navbar-nav {
       text-align: center;
       .nav-item {
