@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export const useGetProjectDetail = () => {
+const useGetProjectDetail = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [projectDetails, setProjectDetails] = useState([])
   const getProjectDetail = (id) => {
@@ -26,3 +26,4 @@ export const useGetProjectDetail = () => {
     getProjectDetail,
   }
 }
+export default useGetProjectDetail

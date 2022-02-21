@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useGetProjects } from '../../hooks/useGetProjects/useGetProjects'
+import useGetProjects from '../../hooks/useGetProjects/useGetProjects'
 import GridContainer from '../GridContainer/GridContainer'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import './Project.scss'

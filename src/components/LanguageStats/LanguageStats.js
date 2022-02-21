@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useGetLanguageStats } from '../../hooks/useGetLanguageStats/useGetLanguageStats'
+import useGetLanguageStats from '../../hooks/useGetLanguageStats/useGetLanguageStats'
 import './LanguageStats.scss'
 import { Bar } from 'react-chartjs-2'
 import Btn from '../Btn/Btn'

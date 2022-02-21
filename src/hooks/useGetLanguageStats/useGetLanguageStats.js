@@ -38,7 +38,7 @@ const callStatsApi = async (item) => {
       }
     })
 }
-export const useGetLanguageStats = () => {
+const useGetLanguageStats = () => {
   const [numberOfFetched, setNumberOfFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
@@ -124,3 +124,4 @@ export const useGetLanguageStats = () => {
     languages,
   }
 }
+export default useGetLanguageStats

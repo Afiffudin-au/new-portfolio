@@ -10,7 +10,7 @@ import {
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
 import Btn from '../Btn/Btn'
-import { useGetTopics } from '../../hooks/useGetTopics/useGetTopics'
+import useGetTopics from '../../hooks/useGetTopics/useGetTopics'
 import './TopicStats.scss'
 import { topicStats } from '../../hooks/useGetTopics/topicStats'
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)

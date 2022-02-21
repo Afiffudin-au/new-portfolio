@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 
-export const useGetProjects = () => {
+const useGetProjects = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [projects, setProjects] = useState([])
   const getProject = () => {
@@ -26,3 +26,4 @@ export const useGetProjects = () => {
     projects,
   }
 }
+export default useGetProjects

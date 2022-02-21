@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useGetTestimonials } from '../../hooks/useGetTestimonials/useGetTestimonials'
+import useGetTestimonials from '../../hooks/useGetTestimonials/useGetTestimonials'
 import TestimonialCard from '../TestimonialCard/TestimonialCard'
 import ProgressBar from '../ProgressBar/ProgressBar'
 import './Testimonial.scss'

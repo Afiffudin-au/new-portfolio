@@ -23,7 +23,7 @@ const callTopicsApi = async (item) => {
     })
 }
 
-export const useGetTopics = () => {
+const useGetTopics = () => {
   const [numberOfFetched, setNumberOfFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [topics, setTopics] = useState({})
@@ -83,3 +83,4 @@ export const useGetTopics = () => {
     topics,
   }
 }
+export default useGetTopics

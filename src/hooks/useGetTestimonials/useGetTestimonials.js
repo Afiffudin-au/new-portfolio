@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
-export const useGetTestimonials = () => {
+const useGetTestimonials = () => {
   const [isLoading, setIsLoading] = useState(false)
   const [testimonials, setTestimonials] = useState([])
   const getTestimonial = () => {
@@ -24,3 +24,4 @@ export const useGetTestimonials = () => {
     testimonials,
   }
 }
+export default useGetTestimonials

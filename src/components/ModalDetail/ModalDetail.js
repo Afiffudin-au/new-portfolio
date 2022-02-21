@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Modal from 'react-modal'
-import { useGetProjectDetail } from '../../hooks/useGetProjectDetails/useGetProjectDetail'
+import useGetProjectDetail from '../../hooks/useGetProjectDetails/useGetProjectDetail'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './ModalDetail.scss'
 import ProgressBar from '../ProgressBar/ProgressBar'
