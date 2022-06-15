@@ -7,8 +7,7 @@ function Banner() {
       <div className='container'>
         <h1 className='title'>I'm Afiffudin-au.</h1>
         <p className='desc'>
-          I'm a based Indonesia. Front-End ReactJs Developer Every Day Every
-          Time.
+          I'm a based Indonesia. Front-End Developer Every Day Every Time.
         </p>
         <div className='socials'>
           <a

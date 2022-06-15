@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import useGetTestimonials from '../../hooks/useGetTestimonials/useGetTestimonials'
-import TestimonialCard from '../TestimonialCard/TestimonialCard'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import useGetTestimonial from '../../hooks/useGetTestimonial'
+import TestimonialCard from '../TestimonialCard'
+import ProgressBar from '../ProgressBar'
 import './Testimonial.scss'
 function Testimonial() {
-  const { getTestimonial, isLoading, testimonials } = useGetTestimonials()
+  const { getTestimonial, isLoading, testimonials } = useGetTestimonial()
   useEffect(() => {
     getTestimonial()
   }, [])

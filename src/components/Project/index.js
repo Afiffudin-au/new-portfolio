@@ -1,32 +1,34 @@
-import React, { useEffect } from 'react'
-import useGetProjects from '../../hooks/useGetProjects/useGetProjects'
-import GridContainer from '../GridContainer/GridContainer'
-import ProjectCard from '../ProjectCard/ProjectCard'
+import React, { useEffect, useMemo } from 'react'
+import useGetProject from '../../hooks/useGetProject'
+import GridContainer from '../GridContainer'
+import ProjectCard from '../ProjectCard'
 import './Project.scss'
 import { FaGithubSquare } from 'react-icons/fa'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import ProgressBar from '../ProgressBar'
 function Project() {
-  const { getProject, isLoading, projects } = useGetProjects()
+  const { getProject, isLoading, projects } = useGetProject()
   useEffect(() => {
     getProject()
   }, [])
+  const memoizedCard = useMemo(() => {
+    return projects?.map((item, i) => (
+      <ProjectCard
+        id={item._id}
+        key={item._id}
+        imgUrl={item.imgUrl}
+        description={item.description}
+        projectName={item.projectName}
+        technology={item.tech}
+      />
+    ))
+  }, [projects])
   return (
     <section className='project' id='work'>
       <div className='container'>
         <h1 className='title'>Projects</h1>
         {isLoading && <ProgressBar />}
-
         <GridContainer>
-          {projects?.map((item, i) => (
-            <ProjectCard
-              id={item._id}
-              key={item._id}
-              imgUrl={item.imgUrl}
-              description={item.description}
-              projectName={item.projectName}
-              technology={item.tech}
-            />
-          ))}
+          {memoizedCard}
           {!isLoading && (
             <div className='wrap-link'>
               <FaGithubSquare
@@ -40,7 +42,6 @@ function Project() {
           )}
         </GridContainer>
       </div>
-      {/* <ModalDetail /> */}
     </section>
   )
 }

@@ -15,11 +15,9 @@ function About() {
           <div className='col-md-8'>
             <h1 className='title'>About me</h1>
             <p className='desc'>
-              My name is Afifuddin, I am a Front end React JS Developer. Who
-              likes to build things, solve problems and learn new things. Have
-              an interest in Javascript, especially React, React Redux, and
-              NextJS. I really like HTML, CSS, SCSS and other supporting
-              frameworks / libraries
+              My name is Afifuddin, I am a Front end Developer. Who likes to
+              build things, solve problems, and learn new things. Have an
+              interest in Javascript, especially React, React Redux, and NextJS.
             </p>
             <div className='contact_details'>
               <div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ModalDetail from '../ModalDetail/ModalDetail'
+import ModalDetail from '../ModalDetail'
 import './ProjectCard.scss'
 function ProjectCard({ id, projectName, technology, imgUrl, description }) {
   const [openModal, setOpenModal] = useState(false)

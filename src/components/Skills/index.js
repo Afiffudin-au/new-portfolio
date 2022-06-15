@@ -17,6 +17,7 @@ const skillItems = [
   'HTML',
   'CSS',
   'JavaScript',
+  'Typescript',
   'Scss',
   'React',
   'React Redux',

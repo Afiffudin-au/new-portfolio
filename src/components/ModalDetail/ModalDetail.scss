@@ -68,6 +68,9 @@
           &::first-letter {
             text-transform: uppercase;
           }
+          p{
+            margin: 0;
+          }
         }
         .github-link {
           letter-spacing: 0.5px;

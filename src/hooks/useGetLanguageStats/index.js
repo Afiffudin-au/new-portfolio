@@ -1,7 +1,9 @@
 import axios from 'axios'
 import { useState } from 'react'
+import { getLanguageAPI } from '../../api-calls/language'
 import formatBytes from '../../lib/formatByte'
-import { languageStats } from './languageStats'
+import { toast } from 'react-toastify'
+import { header_auth_github } from '../../config/api-config'
 const controller = new AbortController()
 let jsLanguage = []
 let tsLanguage = []
@@ -19,9 +21,7 @@ const callStatsApi = async (item) => {
     method: 'GET',
     url: item,
     signal: controller.signal,
-    headers: {
-      Authorization: `Bearer ${process.env.REACT_APP_AUTH}`,
-    },
+    headers: header_auth_github,
   })
     .then((res) => {
       fetchErorr = false
@@ -42,7 +42,8 @@ const useGetLanguageStats = () => {
   const [numberOfFetched, setNumberOfFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [languages, setLanguage] = useState({})
-  const getLanguageStats = () => {
+  const [totalRepo, setTotalRepo] = useState(0)
+  const getLanguageStats = async () => {
     //Clean UP
     jsLanguage = []
     tsLanguage = []
@@ -58,16 +59,25 @@ const useGetLanguageStats = () => {
     setNumberOfFetched(0)
     setLanguage({})
     setIsLoading(false)
+
+    // get languages api
+    const res = await getLanguageAPI()
+    if (res.error) {
+      toast.error(res.message)
+      return
+    }
+    const extractData = res.data.data.map((item) => item.urlProgLang)
+    setTotalRepo(extractData.length)
     const promise = new Promise(async (resolve, reject) => {
       setIsLoading(true)
-      if (languageStats) {
-        for (const [i, item] of languageStats.entries()) {
+      if (extractData) {
+        for (const [i, item] of extractData.entries()) {
           await callStatsApi(item)
           if (fetchErorr === true) {
             return
           }
           setNumberOfFetched(i + 1)
-          if (i === languageStats.length - 1) {
+          if (i === extractData.length - 1) {
             resolve('SUCCESS')
           }
         }
@@ -122,6 +132,7 @@ const useGetLanguageStats = () => {
     numberOfFetched,
     isLoading,
     languages,
+    totalRepo,
   }
 }
 export default useGetLanguageStats

@@ -1,16 +1,15 @@
 import axios from 'axios'
 import { useState } from 'react'
-import { topicStats } from './topicStats'
+import { header_auth_github } from '../../config/api-config'
+import { toast } from 'react-toastify'
+import { getTopicAPI } from '../../api-calls/topic'
 let totalTopics = []
 let fetchErorr = false
 const callTopicsApi = async (item) => {
   return axios({
     method: 'GET',
     url: item,
-    headers: {
-      Authorization: `Bearer ${process.env.REACT_APP_AUTH}`,
-      Accept: process.env.REACT_APP_ACCEPT,
-    },
+    headers: header_auth_github,
   })
     .then((res) => {
       fetchErorr = false
@@ -27,22 +26,31 @@ const useGetTopics = () => {
   const [numberOfFetched, setNumberOfFetched] = useState(0)
   const [isLoading, setIsLoading] = useState(false)
   const [topics, setTopics] = useState({})
-  const getTopics = () => {
+  const [totalRepo, setTotalRepo] = useState(0)
+  const getTopics = async () => {
     //Clean up
     totalTopics = []
     setNumberOfFetched(0)
     setTopics({})
     setIsLoading(false)
+    // get languages api
+    const res = await getTopicAPI()
+    if (res.error) {
+      toast.error(res.message)
+      return
+    }
+    const extractData = res.data.data.map((item) => item.urlTopic)
+    setTotalRepo(extractData.length)
     const promise = new Promise(async (resolve, reject) => {
       setIsLoading(true)
-      if (topicStats) {
-        for (const [i, item] of topicStats.entries()) {
+      if (extractData) {
+        for (const [i, item] of extractData.entries()) {
           await callTopicsApi(item)
           if (fetchErorr === true) {
             return
           }
           setNumberOfFetched(i + 1)
-          if (i === topicStats.length - 1) {
+          if (i === extractData.length - 1) {
             resolve('SUCCESS')
           }
         }
@@ -81,6 +89,7 @@ const useGetTopics = () => {
     getTopics,
     isLoading,
     topics,
+    totalRepo,
   }
 }
 export default useGetTopics

@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import Modal from 'react-modal'
-import useGetProjectDetail from '../../hooks/useGetProjectDetails/useGetProjectDetail'
+import useGetProjectDetail from '../../hooks/useGetProjectDetail'
 import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './ModalDetail.scss'
-import ProgressBar from '../ProgressBar/ProgressBar'
+import ProgressBar from '../ProgressBar'
 import handleSearchByTag from '../../lib/searchByTag'
 import urlify from '../../lib/urlify'
+import { stylesConfig } from './ModalDetailConfig'
 const randomColors = [
   '#2196f3',
   '#1976d2',
@@ -19,7 +20,7 @@ const randomColors = [
   '#0091ea',
 ]
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
+Modal.setAppElement('#portal')
 function ModalDetail({ openModalProp, setOpenModal, id }) {
   const [modalIsOpen, setIsOpen] = React.useState(openModalProp || false)
   const { getProjectDetail, isLoading, projectDetails } = useGetProjectDetail()
@@ -30,41 +31,28 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
   useEffect(() => {
     getProjectDetail(id)
   }, [id])
+  const memoizedTag = useMemo(() => {
+    return projectDetails?.tech?.map((item, i) => (
+      <div
+        key={i}
+        onClick={() => handleSearchByTag(item)}
+        className='tech'
+        style={{
+          backgroundColor: `${
+            randomColors[Math.floor(Math.random() * randomColors.length)]
+          }`,
+        }}>
+        {item}
+      </div>
+    ))
+  }, [projectDetails])
   return (
     <Modal
       className='main-modal'
-      style={{
-        overlay: {
-          zIndex: '15',
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(255, 255, 255, 0.75)',
-        },
-        content: {
-          position: 'absolute',
-          top: '30px',
-          left: '30px',
-          right: '30px',
-          bottom: '30px',
-          background: '#0B2E51',
-          // background:
-          //   'linear-gradient(270deg, rgba(33,150,243,1) 30%, rgba(28,158,221,1) 45%)',
-          overflow: 'auto',
-          WebkitOverflowScrolling: 'touch',
-          borderRadius: '4px',
-          outline: 'none',
-          padding: '10px',
-        },
-      }}
+      style={stylesConfig}
       isOpen={modalIsOpen}
-      // onAfterOpen={afterOpenModal}
       onRequestClose={closeModal}
-      // style={customStyles}
       contentLabel='Example Modal'>
-      {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
       {isLoading && <ProgressBar />}
       <AiOutlineCloseCircle className='btn-close' onClick={closeModal} />
 
@@ -75,23 +63,7 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
           </div>
           <div className='content-2'>
             <p className='project-name'>{projectDetails.projectName}</p>
-            <div className='tech-used'>
-              {projectDetails?.tech?.map((item, i) => (
-                <div
-                  key={i}
-                  onClick={() => handleSearchByTag(item)}
-                  className='tech'
-                  style={{
-                    backgroundColor: `${
-                      randomColors[
-                        Math.floor(Math.random() * randomColors.length)
-                      ]
-                    }`,
-                  }}>
-                  {item}
-                </div>
-              ))}
-            </div>
+            <div className='tech-used'>{memoizedTag}</div>
             <div
               className='description'
               dangerouslySetInnerHTML={{
