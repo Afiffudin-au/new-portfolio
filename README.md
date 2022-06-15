@@ -2,7 +2,7 @@
 
 **this project uses API v2 from** https://github.com/Afiffudin-au/portfolio-server-v2
 
-Hi everyone, this is my very simple personal portfolio project. This is my second portfolio project, this is a refinement of my first portfolio project. You can see my first portfolio https://fif-au.netlify.app/ and you can also see my new portfolio https://afiffudin-au.netlify.app/.
+A personal portfolio to showcase your projects, interests, topic, testimonial, programming language and general things you want to remember.
 
 This new portfolio has several improvements, namely:
 
