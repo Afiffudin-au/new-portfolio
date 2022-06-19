@@ -23,7 +23,7 @@ const callAPI = async ({ url, method, data }) => {
   }
   const successRes = {
     error: false,
-    message: res.data.message || 'Success',
+    message: 'Success',
     data: res.data,
   }
   return successRes
