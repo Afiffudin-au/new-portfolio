@@ -4,7 +4,6 @@ import { getLanguageAPI } from '../../api-calls/language'
 import formatBytes from '../../lib/formatByte'
 import { toast } from 'react-toastify'
 import { header_auth_github } from '../../config/api-config'
-const controller = new AbortController()
 let jsLanguage = []
 let tsLanguage = []
 let htmlLang = []
@@ -20,7 +19,6 @@ const callStatsApi = async (item) => {
   return axios({
     method: 'GET',
     url: item,
-    signal: controller.signal,
     headers: header_auth_github,
   })
     .then((res) => {
@@ -89,35 +87,35 @@ const useGetLanguageStats = () => {
       .then((res) => {
         jsLanguage.forEach((item) => {
           if (item !== undefined) {
-            totalJavascript += item
+            totalJavascript += 1
           }
         })
         htmlLang.forEach((item) => {
           if (item !== undefined) {
-            totalHTML += item
+            totalHTML += 1
           }
         })
         cssLang.forEach((item) => {
           if (item !== undefined) {
-            totalCSS += item
+            totalCSS += 1
           }
         })
         scssLang.forEach((item) => {
           if (item !== undefined) {
-            totalSCSS += item
+            totalSCSS += 1
           }
         })
         tsLanguage.forEach((item) => {
           if (item !== undefined) {
-            totalTypescript += item
+            totalTypescript += 1
           }
         })
         setLanguage({
-          js: formatBytes(totalJavascript),
-          html: formatBytes(totalHTML),
-          css: formatBytes(totalCSS),
-          scss: formatBytes(totalSCSS),
-          ts: formatBytes(totalTypescript),
+          js: totalJavascript,
+          html: totalHTML,
+          css: totalCSS,
+          scss: totalSCSS,
+          ts: totalTypescript,
         })
         setIsLoading(false)
       })

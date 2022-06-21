@@ -18,7 +18,6 @@ function BarChart() {
   const { getTopics, numberOfFetched, isLoading, topics, totalRepo } =
     useGetTopics()
   const { grandintColor } = useGradientColor()
-
   const data = {
     labels: [
       'React',
@@ -26,12 +25,11 @@ function BarChart() {
       'Redux',
       'VanillaJS',
       'Materi-Ui',
-      'tailwind',
-      'Bootstraps',
+      'Tailwindcss',
+      'Bootstrap',
+      'ChakraUI',
       'Axios',
       'Http-req',
-      'API-requ',
-      'chakraUi',
     ],
     datasets: [
       {
@@ -44,10 +42,9 @@ function BarChart() {
           topics.materialUi,
           topics.tailwindCss,
           topics.bootstraps,
+          topics.chakraUi,
           topics.axios,
           topics.httpRequests,
-          topics.apiRequests,
-          topics.chakraUi,
         ],
         backgroundColor: grandintColor,
         borderRadius: Number.MAX_VALUE,
@@ -81,12 +78,18 @@ function BarChart() {
             </div>
           )}
           <div className='horizontalBarWrap'>
-            <Bar options={options} data={data} />
+            <MemoizedChildBar data={data} options={options} />
           </div>
         </div>
       </div>
     </>
   )
 }
-
+function compare(prevProps, nextProps) {
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps)
+}
+function ChildBar({ data, options }) {
+  return <Bar options={options} data={data} />
+}
+const MemoizedChildBar = React.memo(ChildBar, compare)
 export default BarChart

@@ -63,12 +63,18 @@ function BarChart() {
             </div>
           )}
           <div style={{ height: '300px' }}>
-            <Bar options={options} data={data} />
+            <MemoizedChildBar options={options} data={data} />
           </div>
         </div>
       </div>
     </>
   )
 }
-
+function compare(prevProps, nextProps) {
+  return JSON.stringify(prevProps) === JSON.stringify(nextProps)
+}
+function ChildBar({ data, options }) {
+  return <Bar options={options} data={data} />
+}
+const MemoizedChildBar = React.memo(ChildBar, compare)
 export default BarChart

@@ -69,11 +69,10 @@ const useGetTopics = () => {
           redux: count['redux'],
           next: count['nextjs'],
           materialUi: count['material-ui'],
-          tailwindCss: count['tailwind-css'],
-          bootstraps: count['bootstrap4'],
+          tailwindCss: count['tailwindcss'],
+          bootstraps: count['bootstrap'],
           axios: count['axios'],
           httpRequests: count['http-requests'],
-          apiRequests: count['api-requests'],
           vanillaJs: count['vanilla-javascript'],
           chakraUi: count['chakra-ui'],
         })

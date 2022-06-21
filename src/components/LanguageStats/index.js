@@ -9,11 +9,9 @@ function LanguageStats() {
           <div className='col-md-12 text-center'>
             <h1 className='title'>Language Stats</h1>
             <p className='desc'>
-              Language statistics section, will display all types of languages
-              that I use in several projects. It is calculated based on multiple
-              repositories and is calculated based on the total "bytes" of all
-              code. In conclusion each language will be summed by bytes and
-              converted to kilobytes.
+              The language statistics section, will show you all the types of
+              languages I use in several projects. It is calculated based on
+              multiple repositories.
             </p>
           </div>
         </div>

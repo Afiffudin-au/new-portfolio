@@ -9,10 +9,9 @@ function TopicStats() {
           <div className='col-md-12 text-center'>
             <h1 className='title'>Topic Stats</h1>
             <p className='desc'>
-              Topic statistics section, will show you all the types of topics
-              I've used in several projects. This is calculated by topic in each
-              repository. In conclusion each repository will have its own topic
-              and will be summed.
+              The topic statistics section, will show you all the types of
+              topics I've used in several projects. It is calculated by topic in
+              each repository.
             </p>
           </div>
         </div>
