@@ -5,7 +5,6 @@ import { AiOutlineCloseCircle } from 'react-icons/ai'
 import './ModalDetail.scss'
 import ProgressBar from '../ProgressBar'
 import handleSearchByTag from '../../lib/searchByTag'
-import urlify from '../../lib/urlify'
 import { stylesConfig } from './ModalDetailConfig'
 const randomColors = [
   '#2196f3',
@@ -67,13 +66,13 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
             <div
               className='description'
               dangerouslySetInnerHTML={{
-                __html: urlify(projectDetails?.description),
+                __html: projectDetails?.description,
               }}
             />
             {!isLoading && (
               <div>
                 <p className='github-link'>
-                  See Project :{' '}
+                  Github :{' '}
                   <a
                     href={projectDetails.githubLink}
                     target='_blank'
@@ -83,7 +82,7 @@ function ModalDetail({ openModalProp, setOpenModal, id }) {
                   </a>{' '}
                 </p>
                 <p className='github-link'>
-                  View Project :{' '}
+                  View :{' '}
                   <a
                     href={projectDetails.previewLink}
                     target='_blank'
