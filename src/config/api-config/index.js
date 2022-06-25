@@ -18,6 +18,6 @@ export const headers_auth_personal_portfolio = {
   )}`,
 }
 export const header_auth_github = {
-  Authorization: `Basic ${api_config.GITHUB_API_KEY}`,
+  Authorization: `Bearer ${api_config.GITHUB_API_KEY}`,
   Accept: api_config.GITHUB_ACCEPT,
 }
