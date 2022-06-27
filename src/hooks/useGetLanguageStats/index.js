@@ -1,7 +1,6 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { getLanguageAPI } from '../../api-calls/language'
-import formatBytes from '../../lib/formatByte'
 import { toast } from 'react-toastify'
 import { header_auth_github } from '../../config/api-config'
 let jsLanguage = []
